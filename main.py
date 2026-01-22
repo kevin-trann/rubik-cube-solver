@@ -74,7 +74,89 @@ def r():
     cube[2][0] = newTopRow 
     cube[2][1] = newMiddleRow
     cube[2][2] = newBottomRow
+    
+def rPrime():
+    r()
+    r()
+    r()
+    
+def r2():
+    r()
+    r()
 
+def m():
+    temp = [cube[1][0][1], cube[1][1][1], cube[1][2][1]] #temp holds blue middle column
+    
+    #change middle blue column to middle white column
+    cube[1][0][1] = cube[5][0][1]
+    cube[1][1][1] = cube[5][1][1]
+    cube[1][2][1] = cube[5][2][1]
+    
+    #change middle white column to middle green column
+    # 8, 5, 2
+    cube[5][0][1] = cube[3][2][1]
+    cube[5][1][1] = cube[3][1][1]
+    cube[5][2][1] = cube[3][0][1]
+    
+    #change middle green column to middle
+    # 2, 5, 7
+    cube[3][2][1] = cube[0][0][1]
+    cube[3][1][1] = cube[0][1][1]
+    cube[3][0][1] = cube[0][2][1]
+    
+    #change middle yellow column to middle blue column
+    for i in range(3):
+         cube[0][i][1] = temp[i]
+
+def m2():
+    m()
+    m()
+
+def mPrime():
+    m()
+    m()
+    m()
+    
+def l():
+    #temp to hold left blue column
+    temp = [cube[1][0][0], cube[1][1][0], cube[1][2][0]]
+    
+    #change left blue column to left yellow column
+    cube[1][0][0] = cube[0][0][0]
+    cube[1][1][0] = cube[0][1][0]
+    cube[1][2][0] = cube[0][2][0]
+    
+    #change left yellow column to right green column
+    #9, 6, 3
+    cube[0][0][0] = cube[3][2][2]
+    cube[0][1][0] = cube[3][1][2]
+    cube[0][2][0] = cube[3][0][2]
+    
+    #change right green column to left white column
+    #7, 4, 1
+    cube[3][0][2] = cube[5][2][0] 
+    cube[3][1][2] = cube[5][1][0]
+    cube[3][2][2] = cube[5][0][0]
+    
+    #change left white column to left blue column
+    for i in range(3):
+        cube[5][i][0] = temp[i]
+        
+    #changing left pieces
+    # 7, 4, 1 : 8, 5, 2 : 9, 6, 3
+    newTopRow = [ cube[4][2][0], cube[4][1][0], cube[4][0][0]]
+    newMiddleRow = [ cube[4][2][1], cube[4][1][1], cube[4][0][1]]
+    newBottomRow = [ cube[4][2][2], cube[4][1][2], cube[4][0][2]]
+    
+    cube[4][0] = newTopRow 
+    cube[4][1] = newMiddleRow
+    cube[4][2] = newBottomRow
+def lPrime():
+    l()
+    l()
+    l()
+
+#function to print cube state to test/debug
 def printCube():
     print(f"Top: {cube[0]}")
     print(f"Front: {cube[1]}")
@@ -82,7 +164,8 @@ def printCube():
     print(f"Back: {cube[3]}")
     print(f"Left: {cube[4]}")
     print(f"Bottom: {cube[5]}")
-    
-    
-r()
+
+#main commands
+l()
+lPrime()
 printCube()
