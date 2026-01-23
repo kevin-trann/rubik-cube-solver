@@ -155,7 +155,129 @@ def lPrime():
     l()
     l()
     l()
+    
+def b():
+    
+    #temp to hold top yellow row
+    temp = cube[0][0].copy()
+    
+    #change top yellow row to right red column
+    cube[0][0][0] = cube[2][0][2]
+    cube[0][0][1] = cube[2][1][2]
+    cube[0][0][2] = cube[2][2][2]
+    
+    #change right red column to bottom white row
+    cube[2][0][2] = cube[5][2][2]
+    cube[2][1][2] = cube[5][2][1]
+    cube[2][2][2] = cube[5][2][0]
+    
+    #change bottom white row to left orange column
+    cube[5][2][0] = cube[4][0][0]
+    cube[5][2][1] = cube[4][1][0]
+    cube[5][2][2] = cube[4][2][0]
+    
+    #change left orange column to top yellow row
+    for i in range(3):
+        j = 2 - i
+        cube[4][i][0] = temp[j]
+        
+    #changing back pieces
+    # 7, 4, 1 : 8, 5, 2 : 9, 6, 3
+    newTopRow = [ cube[3][2][0], cube[3][1][0], cube[3][0][0]]
+    newMiddleRow = [ cube[3][2][1], cube[3][1][1], cube[3][0][1]]
+    newBottomRow = [ cube[3][2][2], cube[3][1][2], cube[3][0][2]]
+    
+    cube[3][0] = newTopRow 
+    cube[3][1] = newMiddleRow
+    cube[3][2] = newBottomRow
+    
+def bPrime():
+    b()
+    b()
+    b()
+    
+def b2():
+    b()
+    b()
 
+def d():
+    
+    #temp to hold bottom orange row
+    temp = cube[4][2].copy()
+    
+    #bottom orange row to bottom green row
+    cube[4][2] = cube[3][2]
+    
+    #bottom green row to bottom red row
+    cube[3][2] = cube[2][2]
+    
+    #bottom red row to bottom blue row
+    cube[2][2] = cube[1][2]
+    
+    #change bottom blue row to bottom orange row
+    cube[1][2] = temp
+    
+    #changing bottom pieces
+    # 7, 4, 1 : 8, 5, 2 : 9, 6, 3
+    newTopRow = [ cube[5][2][0], cube[5][1][0], cube[5][0][0]]
+    newMiddleRow = [ cube[5][2][1], cube[5][1][1], cube[5][0][1]]
+    newBottomRow = [ cube[5][2][2], cube[5][1][2], cube[5][0][2]]
+    
+    cube[5][0] = newTopRow 
+    cube[5][1] = newMiddleRow
+    cube[5][2] = newBottomRow
+
+def dPrime():
+    d()
+    d()
+    d()
+    
+def f():
+    
+    # numbers switch but colours stay the same so check this if anything bugs out
+    
+    #temp to hold bottom yellow row
+    temp = cube[0][2].copy()
+    
+    #change bottom yellow row to right orange column
+    cube[0][2][0] = cube[4][2][2]
+    cube[0][2][1] = cube[4][1][2]
+    cube[0][2][2] = cube[4][0][2]
+    
+    #change right orange column to top white row
+    cube[4][0][2] = cube[5][0][0]
+    cube[4][1][2] = cube[5][0][1]
+    cube[4][2][2] = cube[5][0][2]
+    
+    #change top white row to left red column
+    cube[5][0][0] = cube[2][2][0]
+    cube[5][0][1] = cube[2][1][0]
+    cube[5][0][2] = cube[2][0][0]
+    
+    #change left red column to bottom yellow row
+    for i in range(3):
+        cube[2][i][0] = temp[i]
+        
+    #changing front pieces
+    # 7, 4, 1 : 8, 5, 2 : 9, 6, 3
+    newTopRow = [ cube[1][2][0], cube[1][1][0], cube[1][0][0]]
+    newMiddleRow = [ cube[1][2][1], cube[1][1][1], cube[1][0][1]]
+    newBottomRow = [ cube[1][2][2], cube[1][1][2], cube[1][0][2]]
+    
+    cube[1][0] = newTopRow 
+    cube[1][1] = newMiddleRow
+    cube[1][2] = newBottomRow
+    
+    
+def fPrime():
+    f()
+    f()
+    f()
+    
+def randomizeCube():
+    #to be created
+    print("")
+    
 #function to print cube state to test/debug
 def printCube():
     print(f"Top: {cube[0]}")
@@ -166,6 +288,7 @@ def printCube():
     print(f"Bottom: {cube[5]}")
 
 #main commands
-l()
-lPrime()
+
+f()
+fPrime()
 printCube()
