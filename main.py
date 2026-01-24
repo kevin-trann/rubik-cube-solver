@@ -1,3 +1,5 @@
+import random
+
 cube = (
         [['Y1', 'Y2', 'Y3'], ['Y4', 'Y5', 'Y6'], ['Y7', 'Y8', 'Y9']], #top
         [['B1', 'B2', 'B3'], ['B4', 'B5', 'B6'], ['B7', 'B8', 'B9']], #front
@@ -42,6 +44,10 @@ def uPrime():
     cube[0][0] = newTopRow 
     cube[0][1] = newMiddleRow
     cube[0][2] = newBottomRow
+
+def u2():
+    u()
+    u()
     
 def r():
     temp = [ cube[1][0][2], cube[1][1][2], cube[1][2][2]]  #hold right blue column
@@ -151,8 +157,13 @@ def l():
     cube[4][0] = newTopRow 
     cube[4][1] = newMiddleRow
     cube[4][2] = newBottomRow
+    
 def lPrime():
     l()
+    l()
+    l()
+    
+def l2():
     l()
     l()
     
@@ -232,6 +243,10 @@ def dPrime():
     d()
     d()
     
+def d2():
+    d()
+    d()
+    
 def f():
     
     # numbers switch but colours stay the same so check this if anything bugs out
@@ -273,10 +288,38 @@ def fPrime():
     f()
     f()
     f()
+
+def f2():
+    f()
+    f()
     
 def randomizeCube():
-    #to be created
-    print("")
+    #array containing all possible moes on cube
+    moveSet = [r, rPrime, r2, l, lPrime, l2, m, mPrime, m2, f, fPrime, f2, b, bPrime, b2, u, uPrime, u2, d, dPrime, d2]
+    
+    #hashMap to make sure redudant moves are added to scramble sequence
+    conflictedMovesMap = {'r' : ['rPrime', 'r', 'r2'], 'rPrime' : ['r', 'rPrime', 'r2'], 'r2' : ['r2', 'r', 'rPrime'], 'l' : ['lPrime', 'l', 'l2'], 'lPrime' : ['l', 'lPrime', 'l2'], 'l2' : ['l2', 'l', 'lPrime'], 'm' : ['mPrime', 'm', 'm2'], 'mPrime' : ['m', 'm2', 'mPrime'], 'm2' : ['m2', 'm', 'mPrime'], 
+    'f' : ['fPrime', 'f', 'f2'], 'fPrime' : ['fPrime', 'f', 'f2'], 'f2' : ['fPrime', 'f', 'f2'], 'b' : ['b', 'bPrime', 'b2'], 'bPrime' : ['b', 'bPrime', 'b2'], 'b2' : ['b', 'bPrime', 'b2'], 'u' : ['u', 'uPrime', 'u2'], 'uPrime': ['u', 'uPrime', 'u2'], 'u2' : ['u', 'uPrime', 'u2'], 'd' : ['d', 'dPrime', 'd2'], 'dPrime' : ['d', 'dPrime', 'd2'], 'd2' : ['d', 'dPrime', 'd2']}
+    
+    #array to hold the instructions to get to scrambled state
+    scrambleSequence = []
+    
+    count = 0
+    
+    while count < 20:
+        
+        move = random.choice(moveSet)
+        
+        if count > 0 and scrambleSequence[count - 1] in conflictedMovesMap.get(move.__name__):
+            continue
+        
+        scrambleSequence.append(move.__name__)
+        move()
+        
+        count += 1
+
+    print(F"Scramble Sequence: {scrambleSequence}")  
+    
     
 #function to print cube state to test/debug
 def printCube():
@@ -289,6 +332,5 @@ def printCube():
 
 #main commands
 
-f()
-fPrime()
+randomizeCube()
 printCube()
