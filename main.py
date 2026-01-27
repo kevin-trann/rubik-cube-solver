@@ -1,12 +1,12 @@
 import random
 
 cube = (
-        [['Y1', 'Y2', 'Y3'], ['Y4', 'Y5', 'Y6'], ['Y7', 'Y8', 'Y9']], #top
-        [['B1', 'B2', 'B3'], ['B4', 'B5', 'B6'], ['B7', 'B8', 'B9']], #front
-        [['R1', 'R2', 'R3'], ['R4', 'R5', 'R6'], ['R7', 'R8', 'R9']], #right
-        [['G1', 'G2', 'G3'], ['G4', 'G5', 'G6'], ['G7', 'G8', 'G9']], #back
-        [['O1', 'O2', 'O3'], ['O4', 'O5', 'O6'], ['O7', 'O8', 'O9']], #left
-        [['W1', 'W2', 'W3'], ['W4', 'W5', 'W6'], ['W7', 'W8', 'W9']], #bottom
+        [['Y', 'Y', 'Y'], ['Y', 'Y', 'Y'], ['Y', 'Y', 'Y']], #top
+        [['B', 'B', 'B'], ['B', 'B', 'B'], ['B', 'B', 'B']], #front
+        [['R', 'R', 'R'], ['R', 'R', 'R'], ['R', 'R', 'R']], #right
+        [['G', 'G', 'G'], ['G', 'G', 'G'], ['G', 'G', 'G']], #back
+        [['O', 'O', 'O'], ['O', 'O', 'O'], ['O', 'O', 'O']], #left
+        [['W', 'w', 'W'], ['w', 'W', 'w'], ['W', 'w', 'W']], #bottom
         )
 
 #Moves
@@ -306,7 +306,7 @@ def randomizeCube():
     
     count = 0
     
-    while count < 20:
+    while count < 11:
         
         move = random.choice(moveSet)
         
@@ -317,9 +317,47 @@ def randomizeCube():
         move()
         
         count += 1
+        
 
     print(F"Scramble Sequence: {scrambleSequence}")  
-    
+
+#functions to solve cube
+
+#cross solver
+def crossSolver():
+    while cube[5][0][1] != 'w' or cube[5][1][0] != 'w' or cube[5][1][2] != 'w' or cube[5][2][1] != 'w':
+        
+        #check top edge pieces
+        if cube[0][0][1] == 'w':
+            if cube[5][2][1] != 'w':
+                b2()
+            else:
+                u()
+                continue
+        
+        if cube[0][1][0] == 'w':
+            if cube[5][1][0] != 'w':
+                    l2()
+            else:
+                u()
+                continue
+        
+        if cube[0][1][2] == 'w':
+            if cube[5][1][2] != 'w':
+                    r2()
+            else:
+                u()
+                continue
+            
+        if cube[0][2][1] == 'w':
+            if cube[5][0][1] != 'w':
+                    f2()
+            else:
+                u()
+                continue
+        
+        print("HIGH")
+        
     
 #function to print cube state to test/debug
 def printCube():
@@ -331,6 +369,11 @@ def printCube():
     print(f"Bottom: {cube[5]}")
 
 #main commands
+l2()
+r2()
+f2()
+b2()
+printCube()
 
-randomizeCube()
+crossSolver()
 printCube()
