@@ -6,7 +6,7 @@ cube = (
         [['R', 'R', 'R'], ['R', 'R', 'R'], ['R', 'R', 'R']], #right
         [['G', 'G', 'G'], ['G', 'G', 'G'], ['G', 'G', 'G']], #back
         [['O', 'O', 'O'], ['O', 'O', 'O'], ['O', 'O', 'O']], #left
-        [['W', 'w', 'W'], ['w', 'W', 'w'], ['W', 'w', 'W']], #bottom
+        [['W', 'W', 'W'], ['W', 'W', 'W'], ['W', 'W', 'W']], #bottom
         )
 
 #Moves
@@ -295,7 +295,7 @@ def f2():
     
 def randomizeCube():
     #array containing all possible moes on cube
-    moveSet = [r, rPrime, r2, l, lPrime, l2, m, mPrime, m2, f, fPrime, f2, b, bPrime, b2, u, uPrime, u2, d, dPrime, d2]
+    moveSet = [r, rPrime, r2, l, lPrime, l2, f, fPrime, f2, b, bPrime, b2, u, uPrime, u2, d, dPrime, d2]
     
     #hashMap to make sure redudant moves are added to scramble sequence
     conflictedMovesMap = {'r' : ['rPrime', 'r', 'r2'], 'rPrime' : ['r', 'rPrime', 'r2'], 'r2' : ['r2', 'r', 'rPrime'], 'l' : ['lPrime', 'l', 'l2'], 'lPrime' : ['l', 'lPrime', 'l2'], 'l2' : ['l2', 'l', 'lPrime'], 'm' : ['mPrime', 'm', 'm2'], 'mPrime' : ['m', 'm2', 'mPrime'], 'm2' : ['m2', 'm', 'mPrime'], 
@@ -325,38 +325,113 @@ def randomizeCube():
 
 #cross solver
 def crossSolver():
-    while cube[5][0][1] != 'w' or cube[5][1][0] != 'w' or cube[5][1][2] != 'w' or cube[5][2][1] != 'w':
+    while cube[5][0][1] != 'W' or cube[5][1][0] != 'W' or cube[5][1][2] != 'W' or cube[5][2][1] != 'W':
         
         #check top edge pieces
-        if cube[0][0][1] == 'w':
-            if cube[5][2][1] != 'w':
+        #checks top back edge 
+        if cube[0][0][1] == 'W':
+            if cube[3][0][1] == 'G':
                 b2()
-            else:
+                
+            if cube[3][0][1] == 'R':
                 u()
-                continue
-        
-        if cube[0][1][0] == 'w':
-            if cube[5][1][0] != 'w':
-                    l2()
-            else:
-                u()
-                continue
-        
-        if cube[0][1][2] == 'w':
-            if cube[5][1][2] != 'w':
-                    r2()
-            else:
-                u()
-                continue
+                r2()
             
-        if cube[0][2][1] == 'w':
-            if cube[5][0][1] != 'w':
-                    f2()
-            else:
-                u()
-                continue
+            if cube[3][0][1] == 'B':
+                u2()
+                f2()
+                
+            if cube[3][0][1] == 'O':
+                uPrime()
+                l2()
+            continue
         
-        print("HIGH")
+        #checks top left edge
+        if cube[0][1][0] == 'W':
+            if cube[4][0][1] == 'G':
+                u()
+                b2()
+                
+            if cube[4][0][1] == 'R':
+                u2()
+                r2()
+            
+            if cube[4][0][1] == 'B':
+                uPrime()
+                f2()
+                
+            if cube[4][0][1] == 'O':
+                l2()
+            continue
+
+        #checks top right edge
+        if cube[0][1][2] == 'W':
+            if cube[2][0][1] == 'G':
+                uPrime()
+                b2()
+                
+            if cube[2][0][1] == 'R':
+                r2()
+            
+            if cube[2][0][1] == 'B':
+                u()
+                f2()
+                
+            if cube[2][0][1] == 'O':
+                u2()
+                l2()
+            continue
+
+        #checks top bottom edge
+        if cube[0][2][1] == 'W':
+            if cube[1][0][1] == 'G':
+                u2()
+                b2()
+                
+            if cube[1][0][1] == 'R':
+                uPrime()
+                r2()
+            
+            if cube[1][0][1] == 'B':
+                f2()
+                
+            if cube[1][0][1] == 'O':
+                u()
+                l2()
+        
+            continue
+
+        #checks front edges
+        #checks top front edge
+        if cube[1][0][1] == "W":
+            f()
+            r()
+            uPrime()
+            rPrime()
+            fPrime()
+            continue
+        
+        #checks left front edge
+        if cube[1][1][0] == "W":
+            lPrime()
+            uPrime()
+            l()
+            continue
+        
+        #checks right front edge 
+        if cube[1][1][2] == "W":
+            r()
+            u()
+            rPrime()
+            continue
+        
+        #checks bottom front edge
+        if cube[1][2][1] == "W":
+            fPrime()
+            r()
+            u()
+            rPrime()
+            continue
         
     
 #function to print cube state to test/debug
@@ -369,11 +444,8 @@ def printCube():
     print(f"Bottom: {cube[5]}")
 
 #main commands
-l2()
-r2()
-f2()
-b2()
-printCube()
 
+r()
+lPrime()
 crossSolver()
 printCube()
