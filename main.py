@@ -325,7 +325,7 @@ def randomizeCube():
 
 #cross solver
 def crossSolver():
-    while cube[5][0][1] != 'W' or cube[5][1][0] != 'W' or cube[5][1][2] != 'W' or cube[5][2][1] != 'W':
+    while (cube[5][0][1] != 'W' or cube[1][2][1] != 'B') or (cube[5][1][0] != 'W' or cube[4][2][1] != 'O') or (cube[5][1][2] != 'W' or cube[2][2][1] != 'R') or (cube[5][2][1] != 'W' or cube[3][2][1] != 'G'):
         
         #check top edge pieces
         #checks top back edge 
@@ -401,8 +401,8 @@ def crossSolver():
         
             continue
 
-        #checks front edges
-        #checks top front edge
+        #checks front side for white edges
+        #checks top edge
         if cube[1][0][1] == "W":
             f()
             r()
@@ -411,27 +411,145 @@ def crossSolver():
             fPrime()
             continue
         
-        #checks left front edge
+        #checks left edge
         if cube[1][1][0] == "W":
             lPrime()
             uPrime()
             l()
             continue
         
-        #checks right front edge 
+        #checks right edge 
         if cube[1][1][2] == "W":
             r()
             u()
             rPrime()
             continue
         
-        #checks bottom front edge
+        #checks bottom edge
         if cube[1][2][1] == "W":
             fPrime()
             r()
             u()
             rPrime()
             continue
+        
+        
+        #checks right side for white edges
+        #checks top edge
+        if cube[2][0][1] == "W":
+            
+            r()
+            b()
+            uPrime()
+            bPrime()
+            rPrime()
+            continue
+        
+        #checks left edge
+        if cube[2][1][0] == "W":
+            
+            fPrime()
+            uPrime()
+            f()
+            continue
+        
+        #checks right edge 
+        if cube[2][1][2] == "W":
+            b()
+            u()
+            bPrime()
+            continue
+        
+        #checks bottom edge
+        if cube[2][2][1] == "W":    
+            rPrime()
+            b()
+            u()
+            bPrime()
+            continue
+        
+        
+        #checks left side for white edges
+        #checks top edge
+        if cube[4][0][1] == "W":
+            l()
+            f()
+            uPrime()
+            fPrime()
+            lPrime()
+            continue
+        
+        #checks left edge
+        if cube[4][1][0] == "W":
+            bPrime()
+            uPrime()
+            b()
+            continue
+        
+        #checks right edge 
+        if cube[4][1][2] == "W":            
+            f()
+            u()
+            fPrime()
+            continue
+        
+        #checks bottom edge
+        if cube[4][2][1] == "W":
+            lPrime()
+            f()
+            u()
+            fPrime()
+            continue
+        
+        #checks back side for white edges
+        #checks top edge
+        if cube[3][0][1] == "W": 
+            b()
+            l()
+            uPrime()
+            lPrime()
+            bPrime()
+            continue
+        
+        #checks left edge
+        if cube[3][1][0] == "W":
+            rPrime()
+            uPrime()
+            r()
+            continue
+        
+        #checks right edge 
+        if cube[3][1][2] == "W":
+            l()
+            u()
+            lPrime()
+            continue
+        
+        #checks bottom edge
+        if cube[3][2][1] == "W":
+            bPrime()
+            l()
+            u()
+            lPrime()
+            continue
+        
+        #checks if all botttom white edges are oriented correctly
+        if cube[1][2][1] != "B":
+            f2()
+            continue
+        
+        if cube[2][2][1] != "R":
+            r2()
+            continue
+        
+        if cube[4][2][1] != "O":
+            l2()
+            continue
+        
+        if cube[3][2][1] != "G":
+            b2()
+            continue
+        
         
     
 #function to print cube state to test/debug
@@ -445,7 +563,7 @@ def printCube():
 
 #main commands
 
-r()
-lPrime()
+printCube()
+randomizeCube()
 crossSolver()
 printCube()
