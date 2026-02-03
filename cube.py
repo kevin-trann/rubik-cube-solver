@@ -321,6 +321,40 @@ def randomizeCube():
 
     print(F"Scramble Sequence: {scrambleSequence}")  
     
+#function to keep track of piece states
+def changeCubeState():
+    upperTopLeftCorner = [cube[0][0][0], cube[3][0][2], cube[4][0][0]]
+    upperTopRightCorner = [cube[0][0][2], cube[2][0][2], cube[3][0][0]]
+    upperBottomLeftCorner = [cube[0][2][0], cube[4][0][2], cube[1][0][0]]
+    upperBottomRightCorner = [cube[0][2][2], cube[1][0][2], cube[2][0][0]]
+    
+    lowerUpperLeftCorner = [cube[5][2][0], cube[3][2][2], cube[4][2][0]]
+    lowerUpperRightCorner = [cube[5][2][2], cube[2][2][2], cube[3][2][0]]
+    lowerBottomLeftCorner = [cube[5][0][0], cube[4][2][2], cube[1][2][0]]
+    lowerBottomRightCorner = [cube[5][0][2], cube[1][2][2], cube[2][2][0]]
+    
+    upperTopEdge = [cube[0][0][1], cube[3][0][1]]
+    upperLeftEdge = [cube[0][1][0], cube[4][0][1]]
+    upperRightEdge = [cube[0][1][2], cube[2][0][1]]
+    upperBottomEdge = [cube[0][2][1], cube[1][0][1]]
+    
+    backLeftEdge = [cube[3][1][2], cube[4][1][0]]
+    backRightEdge = [cube[2][1][2], cube[3][1][0]]
+    frontLeftEdge = [cube[4][1][2], cube[1][1][0]]
+    frontRightEdge = [cube[1][1][2], cube[2][1][0]]
+    
+    lowerTopEdge = [cube[5][2][1], cube[3][2][1]]
+    lowerLeftEdge = [cube[5][1][0], cube[4][2][1]]
+    lowerRightEdge = [cube[5][1][2], cube[2][2][1]]
+    lowerBottomEdge = [cube[5][0][1], cube[1][2][1]]
+    
+    return (upperTopLeftCorner, upperTopRightCorner, upperBottomLeftCorner, 
+            upperBottomRightCorner, lowerUpperLeftCorner, lowerUpperRightCorner,
+            lowerBottomLeftCorner, lowerBottomRightCorner, upperTopEdge, 
+            upperLeftEdge, upperRightEdge, upperBottomEdge, backLeftEdge,
+            backRightEdge, frontLeftEdge, frontRightEdge, lowerTopEdge,
+            lowerLeftEdge, lowerRightEdge, lowerBottomEdge)
+
     #function to print cube state to test/debug
 def printCube():
     print("")
