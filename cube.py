@@ -328,8 +328,8 @@ def changeCubeState():
     upperBottomLeftCorner = [cube[0][2][0], cube[4][0][2], cube[1][0][0]]
     upperBottomRightCorner = [cube[0][2][2], cube[1][0][2], cube[2][0][0]]
     
-    lowerUpperLeftCorner = [cube[5][2][0], cube[3][2][2], cube[4][2][0]]
-    lowerUpperRightCorner = [cube[5][2][2], cube[2][2][2], cube[3][2][0]]
+    lowerTopLeftCorner = [cube[5][2][0], cube[3][2][2], cube[4][2][0]]
+    lowerTopRightCorner = [cube[5][2][2], cube[2][2][2], cube[3][2][0]]
     lowerBottomLeftCorner = [cube[5][0][0], cube[4][2][2], cube[1][2][0]]
     lowerBottomRightCorner = [cube[5][0][2], cube[1][2][2], cube[2][2][0]]
     
@@ -349,7 +349,7 @@ def changeCubeState():
     lowerBottomEdge = [cube[5][0][1], cube[1][2][1]]
     
     return (upperTopLeftCorner, upperTopRightCorner, upperBottomLeftCorner, 
-            upperBottomRightCorner, lowerUpperLeftCorner, lowerUpperRightCorner,
+            upperBottomRightCorner, lowerTopLeftCorner, lowerTopRightCorner,
             lowerBottomLeftCorner, lowerBottomRightCorner, upperTopEdge, 
             upperLeftEdge, upperRightEdge, upperBottomEdge, backLeftEdge,
             backRightEdge, frontLeftEdge, frontRightEdge, lowerTopEdge,

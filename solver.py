@@ -232,130 +232,363 @@ def f2lSolver():
     
     #updates cube states
     (upperTopLeftCorner, upperTopRightCorner, upperBottomLeftCorner, 
-     upperBottomRightCorner, lowerUpperLeftCorner, lowerUpperRightCorner,
+     upperBottomRightCorner, lowerTopLeftCorner, lowerTopRightCorner,
      lowerBottomLeftCorner, lowerBottomRightCorner, upperTopEdge, 
      upperLeftEdge, upperRightEdge, upperBottomEdge, backLeftEdge,
      backRightEdge, frontLeftEdge, frontRightEdge, lowerTopEdge,
      lowerLeftEdge, lowerRightEdge, lowerBottomEdge) = changeCubeState()
     
-    #checks if blue red pair is valid
-    while lowerBottomRightCorner != ['W', 'B', 'R'] or frontRightEdge != ['B', 'R']:
+    while 'B' not in upperBottomRightCorner or 'W' not in upperBottomRightCorner or 'R' not in upperBottomRightCorner:
         
         (upperTopLeftCorner, upperTopRightCorner, upperBottomLeftCorner, 
-        upperBottomRightCorner, lowerUpperLeftCorner, lowerUpperRightCorner,
+        upperBottomRightCorner, lowerTopLeftCorner, lowerTopRightCorner,
         lowerBottomLeftCorner, lowerBottomRightCorner, upperTopEdge, 
         upperLeftEdge, upperRightEdge, upperBottomEdge, backLeftEdge,
         backRightEdge, frontLeftEdge, frontRightEdge, lowerTopEdge,
         lowerLeftEdge, lowerRightEdge, lowerBottomEdge) = changeCubeState()
+            
+        #moves the corner piece to base case position
+        if 'W' in upperTopLeftCorner and 'B' in upperTopLeftCorner and 'R' in upperTopLeftCorner:
+            u2()
+            continue
         
-        #checks if white blue red piece is in proper corner(base case)
-        if 'W' in upperBottomRightCorner and 'B' in upperBottomRightCorner and 'R' in upperBottomRightCorner:
-            
-            #white is facing blue side
-            if upperBottomRightCorner[1] == 'W':
-                
-                #blue, red in upper right edge
-                if upperRightEdge == ['B', 'R']:
-                    u()
-                    r()
-                    uPrime()
-                    rPrime()
-                    continue
-                
-                if upperRightEdge == ['R', 'B']:
-                    uPrime()
-                    r()
-                    u2()
-                    rPrime()
-                    u()
-                    fPrime()
-                    uPrime()
-                    f()
-                    continue
-                
-                #blue, red in upper top edge
-                if upperTopEdge == ['B', 'R']:
-                    uPrime()
-                    r()
-                    u()
-                    rPrime()
-                    u2()
-                    r()
-                    uPrime()
-                    rPrime()
-                    continue
-                    
-                if upperTopEdge == ['R', 'B']:
-                    uPrime()
-                    r()
-                    uPrime()
-                    rPrime()
-                    u()
-                    fPrime()
-                    uPrime()
-                    f()
-                    continue
-                
-                #blue, red in upper left edge
-                
-                if upperLeftEdge == ['B', 'R']:
-                    uPrime()
-                    r()
-                    u2()
-                    rPrime()
-                    u2()
-                    r()
-                    uPrime()
-                    rPrime()
-                    continue
-                
-                if upperLeftEdge == ['R', 'B']:
-                    fPrime()
-                    uPrime()
-                    f()
-                    continue
-                
-                #blue, red in upper bottom edge
-                
-                if upperBottomEdge == ['B', 'R']:
-                    fPrime()
-                    u()
-                    f()
-                    u2()
-                    r()
-                    u()
-                    rPrime()
-                    continue
-                
-                if upperBottomEdge == ['R', 'B']:
-                    u()
-                    fPrime()
-                    u()
-                    f()
-                    uPrime()
-                    fPrime()
-                    uPrime()
-                    f()
-                    continue
-                    
-                
-
-                
-            
+        if 'W' in upperTopRightCorner and 'B' in upperTopRightCorner and 'R' in upperTopRightCorner:
+            u()
+            continue
         
-                
-            
+        if 'W' in upperBottomLeftCorner and 'B' in upperBottomLeftCorner and 'R' in upperBottomLeftCorner:
+            uPrime()
+            continue
         
-            
-                
+        if 'W' in lowerTopLeftCorner and 'B' in lowerTopLeftCorner and 'R' in lowerTopLeftCorner:
+            l()
+            u2()
+            lPrime()
+            continue
+        
+        if 'W' in lowerTopRightCorner and 'B' in lowerTopRightCorner and 'R' in lowerTopRightCorner:
+            rPrime()
+            u2()
+            r()
+            uPrime()
+            continue
+        
+        if 'W' in lowerBottomLeftCorner and 'B' in lowerBottomLeftCorner and 'R' in lowerBottomLeftCorner:
+            lPrime()
+            uPrime()
+            l()
+            continue
+        
+        if 'W' in lowerBottomRightCorner and 'B' in lowerBottomRightCorner and 'R' in lowerBottomRightCorner:
+            r()
+            u()
+            rPrime()
+            uPrime()
+            continue
+        
+#moves blue red edge piece to top layer (base case)
     
+    if 'R' in backLeftEdge and 'B' in backLeftEdge:
+        l()
+        uPrime()
+        lPrime()
+        u()
+    
+    if 'R' in backRightEdge and 'B' in backRightEdge:
+        u()
+        rPrime()
+        u()
+        r()
+        u2()
+    
+    if 'R' in frontLeftEdge and 'B' in frontLeftEdge:
+        lPrime()
+        uPrime()
+        l()
+        u()
+    
+    if 'R' in frontRightEdge and 'B' in frontRightEdge:
+        u()
+        r()
+        u()
+        rPrime()
+        u2()
+    
+    (upperTopLeftCorner, upperTopRightCorner, upperBottomLeftCorner, 
+    upperBottomRightCorner, lowerTopLeftCorner, lowerTopRightCorner,
+    lowerBottomLeftCorner, lowerBottomRightCorner, upperTopEdge, 
+    upperLeftEdge, upperRightEdge, upperBottomEdge, backLeftEdge,
+    backRightEdge, frontLeftEdge, frontRightEdge, lowerTopEdge,
+    lowerLeftEdge, lowerRightEdge, lowerBottomEdge) = changeCubeState()
+    
+    #white is facing front side
+    if upperBottomRightCorner[1] == 'W':
+        print("YAY")
+        #blue, red in upper right edge
+        if upperRightEdge == ['B', 'R']:
+            u()
+            r()
+            uPrime()
+            rPrime()
+            
+        
+        if upperRightEdge == ['R', 'B']:
+            uPrime()
+            r()
+            u2()
+            rPrime()
+            u()
+            fPrime()
+            uPrime()
+            f()
+        
+        #blue, red in upper top edge
+        if upperTopEdge == ['B', 'R']:
+            uPrime()
+            r()
+            u()
+            rPrime()
+            u2()
+            r()
+            uPrime()
+            rPrime()
+            
+        if upperTopEdge == ['R', 'B']:
+            uPrime()
+            r()
+            uPrime()
+            rPrime()
+            u()
+            fPrime()
+            uPrime()
+            f()
+
+        #blue, red in upper left edge
+        
+        if upperLeftEdge == ['B', 'R']:
+            uPrime()
+            r()
+            u2()
+            rPrime()
+            u2()
+            r()
+            uPrime()
+            rPrime()
+            
+        
+        if upperLeftEdge == ['R', 'B']:
+            fPrime()
+            uPrime()
+            f()
+            
+        
+        #blue, red in upper bottom edge
+        
+        if upperBottomEdge == ['B', 'R']:
+            fPrime()
+            u()
+            f()
+            u2()
+            r()
+            u()
+            rPrime()
+            
+        
+        if upperBottomEdge == ['R', 'B']:
+            u()
+            fPrime()
+            u()
+            f()
+            uPrime()
+            fPrime()
+            uPrime()
+            f()
+            
+
+    #white facing right side
+    if upperBottomRightCorner[2] == 'W':
+        print("YAY2")
+        #blue, red in upper right edge
+        if upperRightEdge == ['B', 'R']:
+            uPrime()
+            r()
+            uPrime()
+            rPrime()
+            u()
+            r()
+            u()
+            rPrime()
+        
+        if upperRightEdge == ['R', 'B']:
+            r()
+            uPrime()
+            rPrime()
+            u2()
+            fPrime()
+            uPrime()
+            f()
+        
+        #blue, red in upper top edge
+        if upperTopEdge == ['B', 'R']:
+            r()
+            u()
+            rPrime()
+            
+        if upperTopEdge == ['R', 'B']:
+            u()
+            fPrime()
+            u2()
+            f()
+            u2()
+            fPrime()
+            u()
+            f()
+        
+        #blue, red in upper left edge
+        
+        if upperLeftEdge == ['B', 'R']:
+            uPrime()
+            r()
+            u()
+            rPrime()
+            u()
+            r()
+            u()
+            rPrime()
+        
+        if upperLeftEdge == ['R', 'B']:
+            u()
+            fPrime()
+            uPrime()
+            f()
+            u2()
+            fPrime()
+            u()
+            f()
+        
+        #blue, red in upper bottom edge
+        
+        if upperBottomEdge == ['B', 'R']:
+            u()
+            fPrime()
+            u2()
+            f()
+            uPrime()
+            r()
+            u()
+            rPrime()
+        
+        if upperBottomEdge == ['R', 'B']:
+            uPrime()
+            fPrime()
+            u()
+            f()
+        
+    #white facing up
+    if upperBottomRightCorner[0] == 'W':
+        print("YAY3")
+        #blue, red in upper right edge
+        if upperRightEdge == ['B', 'R']:
+            r()
+            u2()
+            rPrime()
+            uPrime()
+            r()
+            u()
+            rPrime()
+        
+        if upperRightEdge == ['R', 'B']:
+            f()
+            u()
+            r()
+            uPrime()
+            rPrime()
+            fPrime()
+            r()
+            uPrime()
+            rPrime()
+        
+        #blue, red in upper top edge
+        if upperTopEdge == ['B', 'R']:
+            u()
+            r()
+            u2()
+            rPrime()
+            u()
+            r()
+            uPrime()
+            rPrime()
+            
+        if upperTopEdge == ['R', 'B']:
+            u2()
+            fPrime()
+            uPrime()
+            f()
+            uPrime()
+            fPrime()
+            u()
+            f()
+ 
+        #blue, red in upper left edge
+        
+        if upperLeftEdge == ['B', 'R']:
+            u2()
+            r()
+            u()
+            rPrime()
+            u()
+            r()
+            uPrime()
+            rPrime()
+           
+        if upperLeftEdge == ['R', 'B']:
+            uPrime()
+            fPrime()
+            u2()
+            f()
+            uPrime()
+            fPrime()
+            u()
+            f()
+           
+        #blue, red in upper bottom edge
+        
+        if upperBottomEdge == ['B', 'R']:
+            u()
+            r()
+            uPrime()
+            rPrime()
+            uPrime()
+            r()
+            uPrime()
+            rPrime()
+            u()
+            r()
+            uPrime()
+            rPrime()
+           
+        if upperBottomEdge == ['R', 'B']:
+            u()
+            fPrime()
+            u2()
+            f()
+            u()
+            fPrime()
+            uPrime()
+            f()
+            uPrime()
+            fPrime()
+            u()
+            f()
+                
+    """
         print(upperTopLeftCorner)
         print(upperTopRightCorner)
         print(upperBottomLeftCorner)
         print(upperBottomRightCorner)  
         print("")  
-        print(lowerUpperLeftCorner)  
-        print(lowerUpperRightCorner)  
+        print(lowerTopLeftCorner)  
+        print(lowerTopRightCorner)  
         print(lowerBottomLeftCorner)
         print(lowerBottomRightCorner)
         print("")  
@@ -374,3 +607,4 @@ def f2lSolver():
         print(lowerRightEdge)
         print(lowerBottomEdge)
         print("")  
+        """
