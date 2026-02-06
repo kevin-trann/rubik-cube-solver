@@ -323,7 +323,6 @@ def f2lSolver():
     
     #white is facing front side
     if upperBottomRightCorner[1] == 'W':
-        print("YAY")
         #blue, red in upper right edge
         if upperRightEdge == ['B', 'R']:
             u()
@@ -407,7 +406,7 @@ def f2lSolver():
 
     #white facing right side
     if upperBottomRightCorner[2] == 'W':
-        print("YAY2")
+        
         #blue, red in upper right edge
         if upperRightEdge == ['B', 'R']:
             uPrime()
@@ -486,7 +485,6 @@ def f2lSolver():
         
     #white facing up
     if upperBottomRightCorner[0] == 'W':
-        print("YAY3")
         #blue, red in upper right edge
         if upperRightEdge == ['B', 'R']:
             r()
@@ -580,7 +578,294 @@ def f2lSolver():
             fPrime()
             u()
             f()
-                
+    
+    # while 'Y' not in upperBottomLeftCorner or 'O' not in upperBottomLeftCorner or 'B' not in upperBottomLeftCorner:            
+
+    (upperTopLeftCorner, upperTopRightCorner, upperBottomLeftCorner, 
+    upperBottomRightCorner, lowerTopLeftCorner, lowerTopRightCorner,
+    lowerBottomLeftCorner, lowerBottomRightCorner, upperTopEdge, 
+    upperLeftEdge, upperRightEdge, upperBottomEdge, backLeftEdge,
+    backRightEdge, frontLeftEdge, frontRightEdge, lowerTopEdge,
+    lowerLeftEdge, lowerRightEdge, lowerBottomEdge) = changeCubeState()
+    
+    #move yellow orange blue corner to base case
+    
+    if 'W' in lowerTopLeftCorner and 'O' in lowerTopLeftCorner and 'B' in lowerTopLeftCorner:
+        l()
+        u2()
+        lPrime()
+        u()
+    
+    if 'W' in lowerTopRightCorner and 'O' in lowerTopRightCorner and 'B' in lowerTopRightCorner:
+        rPrime()
+        u2()
+        r()
+        
+    if 'W' in lowerBottomLeftCorner and 'O' in lowerBottomLeftCorner and 'B' in lowerBottomLeftCorner:
+        lPrime()
+        uPrime()
+        l()
+        u()
+        
+    if 'W' in upperBottomRightCorner and 'O' in upperBottomRightCorner and 'B' in upperBottomRightCorner:
+        u()
+    
+    if 'W' in upperTopRightCorner and 'O' in upperTopRightCorner and 'B' in upperTopRightCorner:
+        u2()
+        
+    if 'W' in upperTopLeftCorner and 'O' in upperTopLeftCorner and 'B' in upperTopLeftCorner:
+        uPrime()
+    
+    (upperTopLeftCorner, upperTopRightCorner, upperBottomLeftCorner, 
+    upperBottomRightCorner, lowerTopLeftCorner, lowerTopRightCorner,
+    lowerBottomLeftCorner, lowerBottomRightCorner, upperTopEdge, 
+    upperLeftEdge, upperRightEdge, upperBottomEdge, backLeftEdge,
+    backRightEdge, frontLeftEdge, frontRightEdge, lowerTopEdge,
+    lowerLeftEdge, lowerRightEdge, lowerBottomEdge) = changeCubeState()
+    
+    #move orange blue edge piece to top layer
+    
+    if 'O' in frontLeftEdge and 'B' in frontLeftEdge:
+        u()
+        f()
+        u()
+        fPrime()
+        u2()
+        
+    if 'O' in backLeftEdge and 'B' in backLeftEdge:
+        l()
+        u()
+        lPrime()
+        
+    if 'O' in backRightEdge and 'B' in backRightEdge:
+        rPrime()
+        u()
+        r()
+        uPrime()
+    
+    (upperTopLeftCorner, upperTopRightCorner, upperBottomLeftCorner, 
+    upperBottomRightCorner, lowerTopLeftCorner, lowerTopRightCorner,
+    lowerBottomLeftCorner, lowerBottomRightCorner, upperTopEdge, 
+    upperLeftEdge, upperRightEdge, upperBottomEdge, backLeftEdge,
+    backRightEdge, frontLeftEdge, frontRightEdge, lowerTopEdge,
+    lowerLeftEdge, lowerRightEdge, lowerBottomEdge) = changeCubeState()
+    
+    #white facing up
+    if upperBottomLeftCorner[0] == 'W':
+        
+        if upperRightEdge == ['B', 'O']:
+            u2()
+            lPrime()
+            uPrime()
+            l()
+            uPrime()
+            lPrime()
+            u()
+            l()
+        
+        if upperRightEdge == ['O', 'B']:
+            u()
+            f()
+            u2()
+            fPrime()
+            u()
+            f()
+            uPrime()
+            fPrime()
+            
+        if upperTopEdge == ['B', 'O']:
+            uPrime()
+            lPrime()
+            u2()
+            l()
+            uPrime()
+            lPrime()
+            u()
+            l()
+            
+        if upperTopEdge == ['O', 'B']:
+            u2()
+            f()
+            u()
+            fPrime()
+            u()
+            f()
+            uPrime()
+            fPrime()
+            
+        if upperLeftEdge == ['B', 'O']:
+            lPrime()
+            u2()
+            l()
+            u()
+            lPrime()
+            uPrime()
+            l()
+        
+        if upperLeftEdge == ['O', 'B']:
+            u()
+            lPrime()
+            u()
+            l()
+            u()
+            f()
+            u()
+            fPrime()
+            u()
+            f()
+            uPrime()
+            fPrime()
+            
+        if upperBottomEdge == ['B', 'O']:
+            l()
+            u()
+            f()
+            uPrime()
+            fPrime()
+            lPrime()
+            f()
+            uPrime()
+            fPrime()
+
+        if upperBottomEdge == ['O', 'B']:
+            f()
+            u2()
+            fPrime()
+            uPrime()
+            f()
+            u()
+            fPrime()
+    
+    #white face front
+    if upperBottomLeftCorner[2] == 'W':
+        
+        if upperRightEdge == ['B', 'O']:
+            u()
+            lPrime()
+            u2()
+            l()
+            u2()
+            lPrime()
+            u()
+            l()
+            
+        if upperRightEdge == ['O', 'B']:
+            f()
+            u()
+            fPrime()
+        if upperTopEdge == ['B', 'O']:
+            u()
+            lPrime()
+            uPrime()
+            l()
+            u2()
+            lPrime()
+            u()
+            l()
+            
+        if upperTopEdge == ['O', 'B']:
+            u()
+            lPrime()
+            u() 
+            l()
+            uPrime()
+            f()
+            u()
+            fPrime()
+            
+        if upperLeftEdge == ['B', 'O']:
+            uPrime()
+            lPrime()
+            u()
+            l()
+        if upperLeftEdge == ['O', 'B']:
+            u()
+            lPrime()
+            u2()
+            l()
+            uPrime()
+            f()
+            u()
+            fPrime()
+        if upperBottomEdge == ['B', 'O']:
+            f()
+            uPrime()
+            fPrime()
+            u2()
+            lPrime()
+            uPrime()
+            l()
+        if upperBottomEdge == ['O', 'B']:
+            l()
+            uPrime()
+            lPrime()
+            f()
+            u()
+            fPrime()
+            
+    #white face left
+    if upperBottomLeftCorner[1] == 'W':
+        
+        if upperRightEdge == ['B', 'O']:
+           l()
+           uPrime()
+           l2()
+           uPrime()
+           l()
+        if upperRightEdge == ['O', 'B']:
+            l()
+            u()
+            lPrime()
+            u()
+            f()
+            uPrime()
+            fPrime()
+        if upperTopEdge == ['B', 'O']:
+            lPrime()
+            uPrime()
+            l()
+            
+        if upperTopEdge == ['O', 'B']:
+            uPrime()
+            f()
+            u2()
+            fPrime()
+            u2()
+            f()
+            uPrime()
+            fPrime()
+        if upperLeftEdge == ['B', 'O']:
+            u()
+            lPrime()
+            u()
+            l()
+            uPrime()
+            lPrime()
+            uPrime()
+            l()
+        if upperLeftEdge == ['O', 'B']:
+            lPrime()
+            u()
+            l()
+            u2()
+            f()
+            u()
+            fPrime()
+        if upperBottomEdge == ['B', 'O']:
+            uPrime()
+            f()
+            u2()
+            fPrime()
+            u()
+            lPrime()
+            uPrime()
+            l()
+
+        if upperBottomEdge == ['O', 'B']:
+            u()
+            f()
+            uPrime()
+            fPrime()
     """
         print(upperTopLeftCorner)
         print(upperTopRightCorner)
