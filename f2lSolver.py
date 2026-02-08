@@ -1,242 +1,15 @@
 from cube import *
-#functions to solve cube
-#cross solver
-def crossSolver():
-    while (cube[5][0][1] != 'W' or cube[1][2][1] != 'B') or (cube[5][1][0] != 'W' or cube[4][2][1] != 'O') or (cube[5][1][2] != 'W' or cube[2][2][1] != 'R') or (cube[5][2][1] != 'W' or cube[3][2][1] != 'G'):
-        
-        #check top edge pieces
-        #checks top back edge 
-        if cube[0][0][1] == 'W':
-            if cube[3][0][1] == 'G':
-                b2()
-                
-            if cube[3][0][1] == 'R':
-                u()
-                r2()
-            
-            if cube[3][0][1] == 'B':
-                u2()
-                f2()
-                
-            if cube[3][0][1] == 'O':
-                uPrime()
-                l2()
-            continue
-        
-        #checks top left edge
-        if cube[0][1][0] == 'W':
-            if cube[4][0][1] == 'G':
-                u()
-                b2()
-                
-            if cube[4][0][1] == 'R':
-                u2()
-                r2()
-            
-            if cube[4][0][1] == 'B':
-                uPrime()
-                f2()
-                
-            if cube[4][0][1] == 'O':
-                l2()
-            continue
-
-        #checks top right edge
-        if cube[0][1][2] == 'W':
-            if cube[2][0][1] == 'G':
-                uPrime()
-                b2()
-                
-            if cube[2][0][1] == 'R':
-                r2()
-            
-            if cube[2][0][1] == 'B':
-                u()
-                f2()
-                
-            if cube[2][0][1] == 'O':
-                u2()
-                l2()
-            continue
-
-        #checks top bottom edge
-        if cube[0][2][1] == 'W':
-            if cube[1][0][1] == 'G':
-                u2()
-                b2()
-                
-            if cube[1][0][1] == 'R':
-                uPrime()
-                r2()
-            
-            if cube[1][0][1] == 'B':
-                f2()
-                
-            if cube[1][0][1] == 'O':
-                u()
-                l2()
-        
-            continue
-
-        #checks front side for white edges
-        #checks top edge
-        if cube[1][0][1] == "W":
-            f()
-            r()
-            uPrime()
-            rPrime()
-            fPrime()
-            continue
-        
-        #checks left edge
-        if cube[1][1][0] == "W":
-            lPrime()
-            uPrime()
-            l()
-            continue
-        
-        #checks right edge 
-        if cube[1][1][2] == "W":
-            r()
-            u()
-            rPrime()
-            continue
-        
-        #checks bottom edge
-        if cube[1][2][1] == "W":
-            fPrime()
-            r()
-            u()
-            rPrime()
-            continue
-        
-        
-        #checks right side for white edges
-        #checks top edge
-        if cube[2][0][1] == "W":
-            
-            r()
-            b()
-            uPrime()
-            bPrime()
-            rPrime()
-            continue
-        
-        #checks left edge
-        if cube[2][1][0] == "W":
-            
-            fPrime()
-            uPrime()
-            f()
-            continue
-        
-        #checks right edge 
-        if cube[2][1][2] == "W":
-            b()
-            u()
-            bPrime()
-            continue
-        
-        #checks bottom edge
-        if cube[2][2][1] == "W":    
-            rPrime()
-            b()
-            u()
-            bPrime()
-            continue
-        
-        
-        #checks left side for white edges
-        #checks top edge
-        if cube[4][0][1] == "W":
-            l()
-            f()
-            uPrime()
-            fPrime()
-            lPrime()
-            continue
-        
-        #checks left edge
-        if cube[4][1][0] == "W":
-            bPrime()
-            uPrime()
-            b()
-            continue
-        
-        #checks right edge 
-        if cube[4][1][2] == "W":            
-            f()
-            u()
-            fPrime()
-            continue
-        
-        #checks bottom edge
-        if cube[4][2][1] == "W":
-            lPrime()
-            f()
-            u()
-            fPrime()
-            continue
-        
-        #checks back side for white edges
-        #checks top edge
-        if cube[3][0][1] == "W": 
-            b()
-            l()
-            uPrime()
-            lPrime()
-            bPrime()
-            continue
-        
-        #checks left edge
-        if cube[3][1][0] == "W":
-            rPrime()
-            uPrime()
-            r()
-            continue
-        
-        #checks right edge 
-        if cube[3][1][2] == "W":
-            l()
-            u()
-            lPrime()
-            continue
-        
-        #checks bottom edge
-        if cube[3][2][1] == "W":
-            bPrime()
-            l()
-            u()
-            lPrime()
-            continue
-        
-        #checks if all botttom white edges are oriented correctly
-        if cube[1][2][1] != "B":
-            f2()
-            continue
-        
-        if cube[2][2][1] != "R":
-            r2()
-            continue
-        
-        if cube[4][2][1] != "O":
-            l2()
-            continue
-        
-        if cube[3][2][1] != "G":
-            b2()
-            continue
 
 #function to solve f2l step
 def f2lSolver():
     
     #updates cube states
     (upperTopLeftCorner, upperTopRightCorner, upperBottomLeftCorner, 
-     upperBottomRightCorner, lowerTopLeftCorner, lowerTopRightCorner,
-     lowerBottomLeftCorner, lowerBottomRightCorner, upperTopEdge, 
-     upperLeftEdge, upperRightEdge, upperBottomEdge, backLeftEdge,
-     backRightEdge, frontLeftEdge, frontRightEdge, lowerTopEdge,
-     lowerLeftEdge, lowerRightEdge, lowerBottomEdge) = changeCubeState()
+    upperBottomRightCorner, lowerTopLeftCorner, lowerTopRightCorner,
+    lowerBottomLeftCorner, lowerBottomRightCorner, upperTopEdge, 
+    upperLeftEdge, upperRightEdge, upperBottomEdge, backLeftEdge,
+    backRightEdge, frontLeftEdge, frontRightEdge, lowerTopEdge,
+    lowerLeftEdge, lowerRightEdge, lowerBottomEdge) = changeCubeState()
     
     while 'B' not in upperBottomRightCorner or 'W' not in upperBottomRightCorner or 'R' not in upperBottomRightCorner:
         
@@ -526,7 +299,7 @@ def f2lSolver():
             fPrime()
             u()
             f()
- 
+
         #blue, red in upper left edge
         
         if upperLeftEdge == ['B', 'R']:
@@ -538,7 +311,7 @@ def f2lSolver():
             r()
             uPrime()
             rPrime()
-           
+        
         if upperLeftEdge == ['R', 'B']:
             uPrime()
             fPrime()
@@ -548,7 +321,7 @@ def f2lSolver():
             fPrime()
             u()
             f()
-           
+        
         #blue, red in upper bottom edge
         
         if upperBottomEdge == ['B', 'R']:
@@ -564,7 +337,7 @@ def f2lSolver():
             r()
             uPrime()
             rPrime()
-           
+        
         if upperBottomEdge == ['R', 'B']:
             u()
             fPrime()
@@ -578,8 +351,6 @@ def f2lSolver():
             fPrime()
             u()
             f()
-    
-    # while 'Y' not in upperBottomLeftCorner or 'O' not in upperBottomLeftCorner or 'B' not in upperBottomLeftCorner:            
 
     (upperTopLeftCorner, upperTopRightCorner, upperBottomLeftCorner, 
     upperBottomRightCorner, lowerTopLeftCorner, lowerTopRightCorner,
@@ -807,11 +578,11 @@ def f2lSolver():
     if upperBottomLeftCorner[1] == 'W':
         
         if upperRightEdge == ['B', 'O']:
-           l()
-           uPrime()
-           l2()
-           uPrime()
-           l()
+            l()
+            uPrime()
+            l2()
+            uPrime()
+            l()
         if upperRightEdge == ['O', 'B']:
             l()
             u()
@@ -866,30 +637,383 @@ def f2lSolver():
             f()
             uPrime()
             fPrime()
-    """
-        print(upperTopLeftCorner)
-        print(upperTopRightCorner)
-        print(upperBottomLeftCorner)
-        print(upperBottomRightCorner)  
-        print("")  
-        print(lowerTopLeftCorner)  
-        print(lowerTopRightCorner)  
-        print(lowerBottomLeftCorner)
-        print(lowerBottomRightCorner)
-        print("")  
-        print(upperTopEdge)
-        print(upperLeftEdge)
-        print(upperRightEdge)
-        print(upperBottomEdge)
-        print("")  
-        print(backLeftEdge)
-        print(backRightEdge)
-        print(frontLeftEdge)
-        print(frontRightEdge)
-        print("")  
-        print(lowerTopEdge)
-        print(lowerLeftEdge)
-        print(lowerRightEdge)
-        print(lowerBottomEdge)
-        print("")  
-        """
+    
+    (upperTopLeftCorner, upperTopRightCorner, upperBottomLeftCorner, 
+    upperBottomRightCorner, lowerTopLeftCorner, lowerTopRightCorner,
+    lowerBottomLeftCorner, lowerBottomRightCorner, upperTopEdge, 
+    upperLeftEdge, upperRightEdge, upperBottomEdge, backLeftEdge,
+    backRightEdge, frontLeftEdge, frontRightEdge, lowerTopEdge,
+    lowerLeftEdge, lowerRightEdge, lowerBottomEdge) = changeCubeState()
+
+    #move orange green corner to top layer(base case)
+
+    if 'W' in lowerTopLeftCorner and 'G' in lowerTopLeftCorner and 'O' in lowerTopLeftCorner:
+        l()
+        u()
+        lPrime()
+        uPrime()
+
+    if 'W' in lowerTopRightCorner and 'G' in lowerTopRightCorner and 'O' in lowerTopRightCorner:
+        rPrime()
+        uPrime()
+        r()
+
+    if 'W' in upperTopRightCorner and 'G' in upperTopRightCorner and 'O' in upperTopRightCorner:
+        uPrime()
+
+    if 'W' in upperBottomRightCorner and 'G' in upperBottomRightCorner and 'O' in upperBottomRightCorner:
+        u2()
+    
+    if 'W' in upperBottomLeftCorner and 'G' in upperBottomLeftCorner and 'O' in upperBottomLeftCorner:
+        u()
+
+    (upperTopLeftCorner, upperTopRightCorner, upperBottomLeftCorner, 
+    upperBottomRightCorner, lowerTopLeftCorner, lowerTopRightCorner,
+    lowerBottomLeftCorner, lowerBottomRightCorner, upperTopEdge, 
+    upperLeftEdge, upperRightEdge, upperBottomEdge, backLeftEdge,
+    backRightEdge, frontLeftEdge, frontRightEdge, lowerTopEdge,
+    lowerLeftEdge, lowerRightEdge, lowerBottomEdge) = changeCubeState()
+
+    #move orange green edge to top layer
+    if 'G' in backLeftEdge and 'O' in backLeftEdge:
+        l()
+        uPrime()
+        lPrime()
+        u2()
+
+    if 'G' in backRightEdge and 'O' in backRightEdge:
+        rPrime()
+        uPrime()
+        r()
+        u()
+
+    (upperTopLeftCorner, upperTopRightCorner, upperBottomLeftCorner, 
+    upperBottomRightCorner, lowerTopLeftCorner, lowerTopRightCorner,
+    lowerBottomLeftCorner, lowerBottomRightCorner, upperTopEdge, 
+    upperLeftEdge, upperRightEdge, upperBottomEdge, backLeftEdge,
+    backRightEdge, frontLeftEdge, frontRightEdge, lowerTopEdge,
+    lowerLeftEdge, lowerRightEdge, lowerBottomEdge) = changeCubeState()
+
+    #white facing up
+    if upperTopLeftCorner[0] == 'W':
+        
+        if upperBottomEdge == ['O', 'G']:
+            u2()
+            bPrime()
+            uPrime()
+            b()
+            uPrime()
+            bPrime()
+            u()
+            b()
+        
+        if upperBottomEdge == ['G', 'O']:
+            u()
+            l()
+            u2()
+            lPrime()
+            u()
+            l()
+            uPrime()
+            lPrime()
+
+        if upperRightEdge == ['O', 'G']:
+            uPrime()
+            bPrime()
+            u2()
+            b()
+            uPrime()
+            bPrime()
+            u()
+            b()
+
+        if upperRightEdge == ['G', 'O']:
+            u2()
+            l()
+            u()
+            lPrime()
+            u()
+            l()
+            uPrime()
+            lPrime()
+
+        if upperTopEdge == ['O', 'G']:
+            bPrime()
+            u2()
+            b()
+            u()
+            bPrime()
+            uPrime()
+            b()
+
+        if upperTopEdge == ['G', 'O']:
+            bPrime()
+            u2()
+            b()
+            u()
+            b()
+            u2()
+            bPrime()
+            u()
+            l()
+            uPrime()
+            lPrime()
+    
+        if upperLeftEdge == ['O', 'G']:
+            b()
+            u2()
+            bPrime()
+            uPrime()
+            bPrime()
+            u2()
+            b()
+            uPrime()
+            bPrime()
+            u()
+            b()
+
+        if upperLeftEdge == ['G', 'O']:
+            l()
+            u2()
+            lPrime()
+            uPrime()
+            l()
+            u()
+            lPrime()
+
+    #white facing left
+    if upperTopLeftCorner[2] == 'W':
+
+        if upperBottomEdge == ['O', 'G']:
+            u()
+            bPrime()
+            u2()
+            b()
+            u2()
+            bPrime()
+            u()
+            b()
+
+        if upperBottomEdge == ['G', 'O']:
+            l()
+            u()
+            lPrime()
+
+        if upperRightEdge == ['O', 'G']:
+            u()
+            bPrime()
+            uPrime()
+            b()
+            u2()
+            bPrime()
+            u()
+            b()
+
+        if upperRightEdge == ['G', 'O']:
+            u()
+            bPrime()
+            u()
+            b()
+            uPrime()
+            l()
+            u()
+            lPrime()
+
+        if upperTopEdge == ['O', 'G']:
+            uPrime()
+            bPrime()
+            u()
+            b()
+
+        if upperTopEdge == ['G', 'O']:
+            u()
+            bPrime()
+            u2()
+            b()
+            uPrime()
+            l()
+            u()
+            lPrime()
+
+        if upperLeftEdge == ['O', 'G']:
+            l()
+            uPrime()
+            lPrime()
+            u2()
+            bPrime()
+            uPrime()
+            b()
+
+        if upperLeftEdge == ['G', 'O']:
+            uPrime()
+            l() 
+            uPrime()
+            lPrime()
+            u()
+            l()
+            u()
+            lPrime()
+
+    #white facing back
+    if upperTopLeftCorner[1] == 'W':
+
+        if upperBottomEdge == ['O', 'G']:
+            uPrime()
+            l()
+            uPrime()
+            lPrime()
+            u()
+            bPrime()
+            uPrime()
+            b() 
+
+        if upperBottomEdge == ['G', 'O']:
+            uPrime()
+            l()
+            u()
+            lPrime()
+            u2()
+            l()
+            uPrime()
+            lPrime()
+
+        if upperRightEdge == ['O', 'G']:
+            bPrime()
+            uPrime()
+            b()
+        if upperRightEdge == ['G', 'O']:
+            uPrime()
+            l()
+            u2()
+            lPrime()
+            u2()
+            l()
+            uPrime()
+            lPrime()
+
+        if upperTopEdge == ['O', 'G']:
+            u()
+            bPrime()
+            u()
+            b()
+            uPrime()
+            bPrime()
+            uPrime()
+            b()
+        if upperTopEdge == ['G', 'O']:
+            bPrime()
+            u()
+            b()
+            u2()
+            l()
+            u()
+            lPrime()
+        if upperLeftEdge == ['O', 'G']:
+            uPrime()
+            l()
+            u2()
+            lPrime()
+            u()
+            bPrime()
+            uPrime()
+            b()
+        if upperLeftEdge == ['G', 'O']:
+            u()
+            l()
+            uPrime()
+            lPrime()
+
+    (upperTopLeftCorner, upperTopRightCorner, upperBottomLeftCorner, 
+    upperBottomRightCorner, lowerTopLeftCorner, lowerTopRightCorner,
+    lowerBottomLeftCorner, lowerBottomRightCorner, upperTopEdge, 
+    upperLeftEdge, upperRightEdge, upperBottomEdge, backLeftEdge,
+    backRightEdge, frontLeftEdge, frontRightEdge, lowerTopEdge,
+    lowerLeftEdge, lowerRightEdge, lowerBottomEdge) = changeCubeState()
+
+    #YAY
+    #move red green corner white to top layer(base case)
+
+    if 'W' in lowerTopRightCorner and 'G' in lowerTopRightCorner and 'R' in lowerTopRightCorner:
+
+    if 'W' in upperTopRightCorner and 'G' in upperTopRightCorner and 'R' in upperTopRightCorner:
+
+    if 'W' in upperBottomRightCorner and 'G' in upperBottomRightCorner and 'R' in upperBottomRightCorner:
+    
+    if 'W' in upperBottomLeftCorner and 'G' in upperBottomLeftCorner and 'R' in upperBottomLeftCorner:
+
+    (upperTopLeftCorner, upperTopRightCorner, upperBottomLeftCorner, 
+    upperBottomRightCorner, lowerTopLeftCorner, lowerTopRightCorner,
+    lowerBottomLeftCorner, lowerBottomRightCorner, upperTopEdge, 
+    upperLeftEdge, upperRightEdge, upperBottomEdge, backLeftEdge,
+    backRightEdge, frontLeftEdge, frontRightEdge, lowerTopEdge,
+    lowerLeftEdge, lowerRightEdge, lowerBottomEdge) = changeCubeState()
+
+    #move red green edge to top layer
+
+    if 'G' in backRightEdge and 'R' in backRightEdge:
+
+    (upperTopLeftCorner, upperTopRightCorner, upperBottomLeftCorner, 
+    upperBottomRightCorner, lowerTopLeftCorner, lowerTopRightCorner,
+    lowerBottomLeftCorner, lowerBottomRightCorner, upperTopEdge, 
+    upperLeftEdge, upperRightEdge, upperBottomEdge, backLeftEdge,
+    backRightEdge, frontLeftEdge, frontRightEdge, lowerTopEdge,
+    lowerLeftEdge, lowerRightEdge, lowerBottomEdge) = changeCubeState()
+
+    #white facing up
+    if upperTopLeftCorner[0] == 'W':
+        
+        if upperBottomEdge == ['R', 'G']:
+        
+        if upperBottomEdge == ['G', 'R']:
+
+        if upperRightEdge == ['R', 'G']:
+
+        if upperRightEdge == ['G', 'R']:
+
+        if upperTopEdge == ['R', 'G']:
+
+        if upperTopEdge == ['G', 'R']:
+    
+        if upperLeftEdge == ['R', 'G']:
+
+        if upperLeftEdge == ['G', 'R']:
+    
+    #white facing right
+    if upperTopLeftCorner[1] == 'W':
+        
+        if upperBottomEdge == ['R', 'G']:
+        
+        if upperBottomEdge == ['G', 'R']:
+
+        if upperRightEdge == ['R', 'G']:
+
+        if upperRightEdge == ['G', 'R']:
+
+        if upperTopEdge == ['R', 'G']:
+
+        if upperTopEdge == ['G', 'R']:
+    
+        if upperLeftEdge == ['R', 'G']:
+
+        if upperLeftEdge == ['G', 'R']:
+
+    #white facing back
+    if upperTopLeftCorner[2] == 'W':
+        
+        if upperBottomEdge == ['R', 'G']:
+        
+        if upperBottomEdge == ['G', 'R']:
+
+        if upperRightEdge == ['R', 'G']:
+
+        if upperRightEdge == ['G', 'R']:
+
+        if upperTopEdge == ['R', 'G']:
+
+        if upperTopEdge == ['G', 'R']:
+    
+        if upperLeftEdge == ['R', 'G']:
+
+        if upperLeftEdge == ['G', 'R']:
+
+    

@@ -1,10 +1,10 @@
 
 from cube import *
-from solver import *
+from crossSolver import *
+from f2lSolver import *
 
 #main commands
 
-printCube()
 randomizeCube()
 crossSolver()
 f2lSolver()
