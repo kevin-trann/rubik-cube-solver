@@ -27,7 +27,7 @@ def u():
     cube[0][0] = newTopRow 
     cube[0][1] = newMiddleRow
     cube[0][2] = newBottomRow
-   
+
 def uPrime():
     temp = cube[1][0].copy() #temp to hold top blue row
     cube[1][0] = cube[4][0] #change top blue row to top orange row
@@ -69,8 +69,8 @@ def r():
     
     #change yellow right column to blue right column    
     for i in range(3):
-         cube[0][i][2] = temp[i]
-         
+        cube[0][i][2] = temp[i]
+    
     #changing right pieces
     # 7, 4, 1 : 8, 5, 2 : 9, 6, 3
     newTopRow = [ cube[2][2][0], cube[2][1][0], cube[2][0][0]]
@@ -112,7 +112,7 @@ def m():
     
     #change middle yellow column to middle blue column
     for i in range(3):
-         cube[0][i][1] = temp[i]
+        cube[0][i][1] = temp[i]
 
 def m2():
     m()
