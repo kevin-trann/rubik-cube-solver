@@ -89,6 +89,14 @@ def rPrime():
 def r2():
     r()
     r()
+    
+def wideR():
+    m()
+    r()
+
+def wideRPrime():
+    mPrime()
+    rPrime()
 
 def m():
     temp = [cube[1][0][1], cube[1][1][1], cube[1][2][1]] #temp holds blue middle column
@@ -292,6 +300,37 @@ def fPrime():
 def f2():
     f()
     f()
+
+def wideF():
+    f()
+    
+    #temp holds middle yellow row
+    temp = cube[0][1].copy()
+    
+    #change middle yellow row to middle orange pieces
+    cube[0][1][0] = cube[4][2][1]
+    cube[0][1][1] = cube[4][1][1]
+    cube[0][1][2] = cube[4][0][1]
+    
+    #change middle orange pieces to middle white row
+    cube[4][0][1] = cube[5][1][0]
+    cube[4][1][1] = cube[5][1][1]
+    cube[4][2][1] = cube[5][1][2]
+    
+    #change middle white row to middle red pieces
+    cube[5][1][0] = cube[2][2][1]
+    cube[5][1][1] = cube[2][1][1]
+    cube[5][1][2] = cube[2][0][1]
+    
+    #change middle red pieces to middle yellow row
+    cube[2][0][1] = temp[0]
+    cube[2][1][1] = temp[1]
+    cube[2][2][1] = temp[2]
+
+def wideFPrime():
+    wideF()
+    wideF()
+    wideF()
     
 def randomizeCube():
     #array containing all possible moes on cube
