@@ -9,9 +9,10 @@ cube = (
         [['W', 'W', 'W'], ['W', 'W', 'W'], ['W', 'W', 'W']], #bottom
         )
 
+solutionSequence = []
 #Moves
 
-def u():
+def u(addToSolutionSequence=True):
     
     temp = cube[1][0].copy() #temp to hold top blue row
     cube[1][0] = cube[2][0] #change top blue row to top red row
@@ -27,8 +28,11 @@ def u():
     cube[0][0] = newTopRow 
     cube[0][1] = newMiddleRow
     cube[0][2] = newBottomRow
+    
+    if addToSolutionSequence:
+        solutionSequence.append('u')
 
-def uPrime():
+def uPrime(addToSolutionSequence=True):
     temp = cube[1][0].copy() #temp to hold top blue row
     cube[1][0] = cube[4][0] #change top blue row to top orange row
     cube[4][0] = cube[3][0] #change top orange row to top green row
@@ -44,12 +48,17 @@ def uPrime():
     cube[0][0] = newTopRow 
     cube[0][1] = newMiddleRow
     cube[0][2] = newBottomRow
-
-def u2():
-    u()
-    u()
     
-def r():
+    if addToSolutionSequence:
+        solutionSequence.append('uPrime')
+
+def u2(addToSolutionSequence=True):
+    u(addToSolutionSequence=False)
+    u(addToSolutionSequence=False)
+    if addToSolutionSequence:
+        solutionSequence.append('u2')
+    
+def r(addToSolutionSequence=True):
     temp = [ cube[1][0][2], cube[1][1][2], cube[1][2][2]]  #hold right blue column
 
     #change blue right column to white right column
@@ -81,24 +90,35 @@ def r():
     cube[2][1] = newMiddleRow
     cube[2][2] = newBottomRow
     
-def rPrime():
-    r()
-    r()
-    r()
+    if addToSolutionSequence:
+        solutionSequence.append('r')
     
-def r2():
-    r()
-    r()
+def rPrime(addToSolutionSequence=True):
+    r(addToSolutionSequence=False)
+    r(addToSolutionSequence=False)
+    r(addToSolutionSequence=False)
+    if addToSolutionSequence:
+        solutionSequence.append('rPrime')
     
-def wideR():
-    m()
-    r()
+def r2(addToSolutionSequence=True):
+    r(addToSolutionSequence=False)
+    r(addToSolutionSequence=False)
+    if addToSolutionSequence:
+        solutionSequence.append('r2')
+    
+def wideR(addToSolutionSequence=True):
+    m(addToSolutionSequence=False)
+    r(addToSolutionSequence=False)
+    if addToSolutionSequence:
+        solutionSequence.append('wideR')
 
-def wideRPrime():
-    mPrime()
-    rPrime()
+def wideRPrime(addToSolutionSequence=True):
+    mPrime(addToSolutionSequence=False)
+    rPrime(addToSolutionSequence=False)
+    if addToSolutionSequence:
+        solutionSequence.append('wideRPrime')
 
-def m():
+def m(addToSolutionSequence=True):
     temp = [cube[1][0][1], cube[1][1][1], cube[1][2][1]] #temp holds blue middle column
     
     #change middle blue column to middle white column
@@ -121,17 +141,23 @@ def m():
     #change middle yellow column to middle blue column
     for i in range(3):
         cube[0][i][1] = temp[i]
+    if addToSolutionSequence:
+        solutionSequence.append('m')
 
-def m2():
-    m()
-    m()
+def m2(addToSolutionSequence=True):
+    m(addToSolutionSequence=False)
+    m(addToSolutionSequence=False)
+    if addToSolutionSequence:
+        solutionSequence.append('m2')
 
-def mPrime():
-    m()
-    m()
-    m()
+def mPrime(addToSolutionSequence=True):
+    m(addToSolutionSequence=False)
+    m(addToSolutionSequence=False)
+    m(addToSolutionSequence=False)
+    if addToSolutionSequence:
+        solutionSequence.append('mPrime')
     
-def l():
+def l(addToSolutionSequence=True):
     #temp to hold left blue column
     temp = [cube[1][0][0], cube[1][1][0], cube[1][2][0]]
     
@@ -166,16 +192,24 @@ def l():
     cube[4][1] = newMiddleRow
     cube[4][2] = newBottomRow
     
-def lPrime():
-    l()
-    l()
-    l()
+    if addToSolutionSequence:
+        solutionSequence.append('l')
     
-def l2():
-    l()
-    l()
+def lPrime(addToSolutionSequence=True):
+    l(addToSolutionSequence=False)
+    l(addToSolutionSequence=False)
+    l(addToSolutionSequence=False)
     
-def b():
+    if addToSolutionSequence:
+        solutionSequence.append('lPrime')
+    
+def l2(addToSolutionSequence=True):
+    l(addToSolutionSequence=False)
+    l(addToSolutionSequence=False)
+    if addToSolutionSequence:
+        solutionSequence.append('l2')
+    
+def b(addToSolutionSequence=True):
     
     #temp to hold top yellow row
     temp = cube[0][0].copy()
@@ -209,17 +243,23 @@ def b():
     cube[3][0] = newTopRow 
     cube[3][1] = newMiddleRow
     cube[3][2] = newBottomRow
+    if addToSolutionSequence:
+        solutionSequence.append('b')
     
-def bPrime():
-    b()
-    b()
-    b()
+def bPrime(addToSolutionSequence=True):
+    b(addToSolutionSequence=False)
+    b(addToSolutionSequence=False)
+    b(addToSolutionSequence=False)
+    if addToSolutionSequence:
+        solutionSequence.append('bPrime')
     
-def b2():
-    b()
-    b()
+def b2(addToSolutionSequence=True):
+    b(addToSolutionSequence=False)
+    b(addToSolutionSequence=False)
+    if addToSolutionSequence:
+        solutionSequence.append('b2')
 
-def d():
+def d(addToSolutionSequence=True):
     
     #temp to hold bottom orange row
     temp = cube[4][2].copy()
@@ -245,17 +285,23 @@ def d():
     cube[5][0] = newTopRow 
     cube[5][1] = newMiddleRow
     cube[5][2] = newBottomRow
+    if addToSolutionSequence:
+        solutionSequence.append('d')
 
-def dPrime():
-    d()
-    d()
-    d()
+def dPrime(addToSolutionSequence=True):
+    d(addToSolutionSequence=False)
+    d(addToSolutionSequence=False)
+    d(addToSolutionSequence=False)
+    if addToSolutionSequence:
+        solutionSequence.append('dPrime')
     
-def d2():
-    d()
-    d()
+def d2(addToSolutionSequence=True):
+    d(addToSolutionSequence=False)
+    d(addToSolutionSequence=False)
+    if addToSolutionSequence:
+        solutionSequence.append('d2')
     
-def f():
+def f(addToSolutionSequence=True):
     
     # numbers switch but colours stay the same so check this if anything bugs out
     
@@ -291,18 +337,25 @@ def f():
     cube[1][1] = newMiddleRow
     cube[1][2] = newBottomRow
     
+    if addToSolutionSequence:
+        solutionSequence.append('f')
     
-def fPrime():
-    f()
-    f()
-    f()
+    
+def fPrime(addToSolutionSequence=True):
+    f(addToSolutionSequence=False)
+    f(addToSolutionSequence=False)
+    f(addToSolutionSequence=False)
+    if addToSolutionSequence:
+        solutionSequence.append('fPrime')
 
-def f2():
-    f()
-    f()
-
-def wideF():
-    f()
+def f2(addToSolutionSequence=True):
+    f(addToSolutionSequence=False)
+    f(addToSolutionSequence=False)
+    if addToSolutionSequence:
+        solutionSequence.append('f2')
+    
+def wideF(addToSolutionSequence=True):
+    f(addToSolutionSequence=False)
     
     #temp holds middle yellow row
     temp = cube[0][1].copy()
@@ -326,13 +379,24 @@ def wideF():
     cube[2][0][1] = temp[0]
     cube[2][1][1] = temp[1]
     cube[2][2][1] = temp[2]
+    
+    if addToSolutionSequence:
+        solutionSequence.append('wideF')
 
-def wideFPrime():
-    wideF()
-    wideF()
-    wideF()
+def wideFPrime(addToSolutionSequence=True):
+    
+    wideF(addToSolutionSequence=False)
+    wideF(addToSolutionSequence=False)
+    wideF(addToSolutionSequence=False)
+    
+    if addToSolutionSequence:
+        solutionSequence.append('wideFPrime')
     
 def randomizeCube():
+    
+    #reset solutionSequence
+    solutionSequence.clear()
+    
     #array containing all possible moes on cube
     moveSet = [r, rPrime, r2, l, lPrime, l2, f, fPrime, f2, b, bPrime, b2, u, uPrime, u2, d, dPrime, d2]
     
@@ -353,12 +417,12 @@ def randomizeCube():
             continue
         
         scrambleSequence.append(move.__name__)
-        move()
+        move(addToSolutionSequence=False)
         
         count += 1
-        
-
-    print(F"Scramble Sequence: {scrambleSequence}")  
+    
+    addToSolutionSequence = True
+    return {"Scramble Sequence" : scrambleSequence}
     
 #function to keep track of piece states
 def changeCubeState():
@@ -404,3 +468,16 @@ def printCube():
     print(f"Left: {cube[4]}")
     print(f"Bottom: {cube[5]}")
     print("")
+
+def getCubeState():
+    return{
+        "Top" : cube[0],
+        "Front" : cube[1],
+        "Right" : cube[2],
+        "Back" : cube[3],
+        "Left" : cube[4],
+        "Bottom" : cube[5],
+    }
+    
+def getSolutionSequence():
+    return solutionSequence()
