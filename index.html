@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubik Cube Solver</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<script src="https://cdn.cubing.net/v0/js/cubing/twisty" type="module"></script>
+
+<body style="background-color: black;">
+
+<script src="index.js"></script>
+
+<twisty-player 
+    id="cube"
+    experimental-setup-alg=""
+    style=  "margin: auto;
+            background: #0088ff22;
+            border: 4px double #FFFFFFFF;
+    "
+    alg=""
+    hint-facelets="none"
+    back-view="top-right"
+    background=#6A0DAD>
+</twisty-player>
+
+<div class="buttons">
+<button type="button" onclick="fetchRandomizeSequence()">Randomize</button>
+
+<button type="button" onclick="fetchSolveSequence()">Solve</button>
+</div>
+
+</body>
+</html>

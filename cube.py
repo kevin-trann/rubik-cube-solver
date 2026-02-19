@@ -30,7 +30,9 @@ def u(addToSolutionSequence=True):
     cube[0][2] = newBottomRow
     
     if addToSolutionSequence:
-        solutionSequence.append('u')
+        solutionSequence.append('U')
+
+
 
 def uPrime(addToSolutionSequence=True):
     temp = cube[1][0].copy() #temp to hold top blue row
@@ -50,13 +52,13 @@ def uPrime(addToSolutionSequence=True):
     cube[0][2] = newBottomRow
     
     if addToSolutionSequence:
-        solutionSequence.append('uPrime')
+        solutionSequence.append('U\'')
 
 def u2(addToSolutionSequence=True):
     u(addToSolutionSequence=False)
     u(addToSolutionSequence=False)
     if addToSolutionSequence:
-        solutionSequence.append('u2')
+        solutionSequence.append('U2')
     
 def r(addToSolutionSequence=True):
     temp = [ cube[1][0][2], cube[1][1][2], cube[1][2][2]]  #hold right blue column
@@ -91,32 +93,32 @@ def r(addToSolutionSequence=True):
     cube[2][2] = newBottomRow
     
     if addToSolutionSequence:
-        solutionSequence.append('r')
+        solutionSequence.append('R')
     
 def rPrime(addToSolutionSequence=True):
     r(addToSolutionSequence=False)
     r(addToSolutionSequence=False)
     r(addToSolutionSequence=False)
     if addToSolutionSequence:
-        solutionSequence.append('rPrime')
+        solutionSequence.append('R\'')
     
 def r2(addToSolutionSequence=True):
     r(addToSolutionSequence=False)
     r(addToSolutionSequence=False)
     if addToSolutionSequence:
-        solutionSequence.append('r2')
+        solutionSequence.append('R2')
     
 def wideR(addToSolutionSequence=True):
     m(addToSolutionSequence=False)
     r(addToSolutionSequence=False)
     if addToSolutionSequence:
-        solutionSequence.append('wideR')
+        solutionSequence.append('r')
 
 def wideRPrime(addToSolutionSequence=True):
     mPrime(addToSolutionSequence=False)
     rPrime(addToSolutionSequence=False)
     if addToSolutionSequence:
-        solutionSequence.append('wideRPrime')
+        solutionSequence.append('r\'')
 
 def m(addToSolutionSequence=True):
     temp = [cube[1][0][1], cube[1][1][1], cube[1][2][1]] #temp holds blue middle column
@@ -142,20 +144,20 @@ def m(addToSolutionSequence=True):
     for i in range(3):
         cube[0][i][1] = temp[i]
     if addToSolutionSequence:
-        solutionSequence.append('m')
+        solutionSequence.append('M')
 
 def m2(addToSolutionSequence=True):
     m(addToSolutionSequence=False)
     m(addToSolutionSequence=False)
     if addToSolutionSequence:
-        solutionSequence.append('m2')
+        solutionSequence.append('M2')
 
 def mPrime(addToSolutionSequence=True):
     m(addToSolutionSequence=False)
     m(addToSolutionSequence=False)
     m(addToSolutionSequence=False)
     if addToSolutionSequence:
-        solutionSequence.append('mPrime')
+        solutionSequence.append('M\'')
     
 def l(addToSolutionSequence=True):
     #temp to hold left blue column
@@ -193,7 +195,7 @@ def l(addToSolutionSequence=True):
     cube[4][2] = newBottomRow
     
     if addToSolutionSequence:
-        solutionSequence.append('l')
+        solutionSequence.append('L')
     
 def lPrime(addToSolutionSequence=True):
     l(addToSolutionSequence=False)
@@ -201,13 +203,13 @@ def lPrime(addToSolutionSequence=True):
     l(addToSolutionSequence=False)
     
     if addToSolutionSequence:
-        solutionSequence.append('lPrime')
+        solutionSequence.append('L\'')
     
 def l2(addToSolutionSequence=True):
     l(addToSolutionSequence=False)
     l(addToSolutionSequence=False)
     if addToSolutionSequence:
-        solutionSequence.append('l2')
+        solutionSequence.append('L2')
     
 def b(addToSolutionSequence=True):
     
@@ -244,20 +246,20 @@ def b(addToSolutionSequence=True):
     cube[3][1] = newMiddleRow
     cube[3][2] = newBottomRow
     if addToSolutionSequence:
-        solutionSequence.append('b')
+        solutionSequence.append('B')
     
 def bPrime(addToSolutionSequence=True):
     b(addToSolutionSequence=False)
     b(addToSolutionSequence=False)
     b(addToSolutionSequence=False)
     if addToSolutionSequence:
-        solutionSequence.append('bPrime')
+        solutionSequence.append('B\'')
     
 def b2(addToSolutionSequence=True):
     b(addToSolutionSequence=False)
     b(addToSolutionSequence=False)
     if addToSolutionSequence:
-        solutionSequence.append('b2')
+        solutionSequence.append('B2')
 
 def d(addToSolutionSequence=True):
     
@@ -286,20 +288,20 @@ def d(addToSolutionSequence=True):
     cube[5][1] = newMiddleRow
     cube[5][2] = newBottomRow
     if addToSolutionSequence:
-        solutionSequence.append('d')
+        solutionSequence.append('D')
 
 def dPrime(addToSolutionSequence=True):
     d(addToSolutionSequence=False)
     d(addToSolutionSequence=False)
     d(addToSolutionSequence=False)
     if addToSolutionSequence:
-        solutionSequence.append('dPrime')
+        solutionSequence.append('D\'')
     
 def d2(addToSolutionSequence=True):
     d(addToSolutionSequence=False)
     d(addToSolutionSequence=False)
     if addToSolutionSequence:
-        solutionSequence.append('d2')
+        solutionSequence.append('D2')
     
 def f(addToSolutionSequence=True):
     
@@ -338,7 +340,7 @@ def f(addToSolutionSequence=True):
     cube[1][2] = newBottomRow
     
     if addToSolutionSequence:
-        solutionSequence.append('f')
+        solutionSequence.append('F')
     
     
 def fPrime(addToSolutionSequence=True):
@@ -346,13 +348,13 @@ def fPrime(addToSolutionSequence=True):
     f(addToSolutionSequence=False)
     f(addToSolutionSequence=False)
     if addToSolutionSequence:
-        solutionSequence.append('fPrime')
+        solutionSequence.append('F\'')
 
 def f2(addToSolutionSequence=True):
     f(addToSolutionSequence=False)
     f(addToSolutionSequence=False)
     if addToSolutionSequence:
-        solutionSequence.append('f2')
+        solutionSequence.append('F2')
     
 def wideF(addToSolutionSequence=True):
     f(addToSolutionSequence=False)
@@ -381,7 +383,7 @@ def wideF(addToSolutionSequence=True):
     cube[2][2][1] = temp[2]
     
     if addToSolutionSequence:
-        solutionSequence.append('wideF')
+        solutionSequence.append('f')
 
 def wideFPrime(addToSolutionSequence=True):
     
@@ -390,7 +392,7 @@ def wideFPrime(addToSolutionSequence=True):
     wideF(addToSolutionSequence=False)
     
     if addToSolutionSequence:
-        solutionSequence.append('wideFPrime')
+        solutionSequence.append('f\'')
     
 def randomizeCube():
     
@@ -404,19 +406,23 @@ def randomizeCube():
     conflictedMovesMap = {'r' : ['rPrime', 'r', 'r2'], 'rPrime' : ['r', 'rPrime', 'r2'], 'r2' : ['r2', 'r', 'rPrime'], 'l' : ['lPrime', 'l', 'l2'], 'lPrime' : ['l', 'lPrime', 'l2'], 'l2' : ['l2', 'l', 'lPrime'], 'm' : ['mPrime', 'm', 'm2'], 'mPrime' : ['m', 'm2', 'mPrime'], 'm2' : ['m2', 'm', 'mPrime'], 
     'f' : ['fPrime', 'f', 'f2'], 'fPrime' : ['fPrime', 'f', 'f2'], 'f2' : ['fPrime', 'f', 'f2'], 'b' : ['b', 'bPrime', 'b2'], 'bPrime' : ['b', 'bPrime', 'b2'], 'b2' : ['b', 'bPrime', 'b2'], 'u' : ['u', 'uPrime', 'u2'], 'uPrime': ['u', 'uPrime', 'u2'], 'u2' : ['u', 'uPrime', 'u2'], 'd' : ['d', 'dPrime', 'd2'], 'dPrime' : ['d', 'dPrime', 'd2'], 'd2' : ['d', 'dPrime', 'd2']}
     
+    #hashMap for move to append to randomized moveset
+    randomMoves = {'r' : 'R', 'rPrime' : 'R\'', 'r2' : 'R2', 'l' : 'L', 'lPrime' : 'L\'', 'l2' : 'L2', 'm' : 'M', 'mPrime' : 'M\'', 'm2' : 'M2',
+    'f' : 'F', 'fPrime' : 'F\'', 'f2' : 'F2', 'b' : 'B', 'bPrime' : 'B\'', 'b2' : 'B2', 'u' : 'U', 'uPrime': 'U\'', 'u2' : 'U2', 'd' : 'D', 'dPrime' : 'D\'', 'd2' : 'D2'}
+    
     #array to hold the instructions to get to scrambled state
     scrambleSequence = []
     
     count = 0
     
-    while count < 11:
+    while count < 21:
         
         move = random.choice(moveSet)
         
         if count > 0 and scrambleSequence[count - 1] in conflictedMovesMap.get(move.__name__):
             continue
         
-        scrambleSequence.append(move.__name__)
+        scrambleSequence.append(randomMoves[move.__name__])
         move(addToSolutionSequence=False)
         
         count += 1

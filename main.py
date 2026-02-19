@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from cube import *
 from crossSolver import *
 from f2lSolver import *
@@ -28,3 +29,10 @@ def solve():
         "solutionMoves" : solutionSequence, 
         "cubeState" : getCubeState()
     }
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
