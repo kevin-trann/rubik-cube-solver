@@ -82,6 +82,7 @@ def zAlg():
     m2()
 
 def pllSolver():
+    global pllSequence
     while not (cube[1][0][0] == cube [1][0][1] == cube [1][0][2]) or not (cube[2][0][0] == cube [2][0][1] == cube [2][0][2]) or not (cube[3][0][0] == cube [3][0][1] == cube [3][0][2]) or not (cube[4][0][0] == cube [4][0][1] == cube [4][0][2]):
         
         #check for uA and uB by checking for top row of same pieces and headlights all around
@@ -155,3 +156,17 @@ def pllSolver():
         
     elif cube[1][0][0] == 'O':
         u()
+    
+    #get PLL moves
+    recordPLL = False
+    
+    for move in solutionSequence:
+        
+        if recordPLL:
+            pllSequence.append(move)
+        
+        if move != 'OLL':
+            continue
+        else:
+            recordPLL = True
+    

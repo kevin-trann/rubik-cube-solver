@@ -1,7 +1,10 @@
 from cube import *
 
+
 #cross solver
 def crossSolver():
+    global crossSequence
+    
     while (cube[5][0][1] != 'W' or cube[1][2][1] != 'B') or (cube[5][1][0] != 'W' or cube[4][2][1] != 'O') or (cube[5][1][2] != 'W' or cube[2][2][1] != 'R') or (cube[5][2][1] != 'W' or cube[3][2][1] != 'G'):
         
         #check top edge pieces
@@ -226,3 +229,8 @@ def crossSolver():
         if cube[3][2][1] != "G":
             b2()
             continue
+    
+    if not crossSequence:
+        crossSequence.clear()
+        crossSequence.extend(solutionSequence)
+        solutionSequence.extend("C")

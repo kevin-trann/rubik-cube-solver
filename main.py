@@ -7,6 +7,24 @@ from ollSolver import *
 from pllSolver import *
 
 #main commands
+randomizeCube()
+crossSolver()
+f2lSolver()
+ollSolver()
+pllSolver()
+printCube()
+print(scrambleSequence)
+print("")
+print(crossSequence)
+print("")
+print(f2lSequence)
+print("")
+print(ollSequence)
+print("")
+print(pllSequence)
+print("")
+print(solutionSequence)
+
 app = FastAPI()
 
 @app.get("/")
@@ -15,9 +33,9 @@ def root():
 
 @app.post("/randomize")
 def randomize():
+    randomizeCube()
     return {
-        "randomMoves" : randomizeCube(), 
-        "cubeState" : getCubeState()
+        "randomMoves" : scrambleSequence
     }
 @app.post("/solve")
 def solve():
@@ -25,10 +43,18 @@ def solve():
     f2lSolver()
     ollSolver()
     pllSolver()
+
+@app.get("/algorithms")
+def getAlgorithms():
     return {
         "solutionMoves" : solutionSequence, 
-        "cubeState" : getCubeState()
+        "crossMoves" : crossSequence,
+        "f2lMoves" : f2lSequence,
+        "ollMoves" : ollSequence,
+        "pllMoves" : pllSequence,
+        "randomMoves" : scrambleSequence
     }
+    
 
 app.add_middleware(
     CORSMiddleware,

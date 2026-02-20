@@ -2,6 +2,7 @@ from cube import *
 
 #function to solve f2l step
 def f2lSolver():
+    global f2lSequence
     
     #updates cube states
     (upperTopLeftCorner, upperTopRightCorner, upperBottomLeftCorner, 
@@ -1195,4 +1196,18 @@ def f2lSolver():
                 rPrime()
                 u()
                 r()
+                
+    #get f2l moves
+    recordF2L = False
+    
+    for move in solutionSequence:
         
+        if recordF2L:
+            f2lSequence.append(move)
+        
+        if move != 'C':
+            continue
+        else:
+            recordF2L = True
+    
+    solutionSequence.append("F2L")

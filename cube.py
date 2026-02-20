@@ -9,7 +9,19 @@ cube = (
         [['W', 'W', 'W'], ['W', 'W', 'W'], ['W', 'W', 'W']], #bottom
         )
 
+scrambleSequence = []
+
+#sequence of moves for entire solution
 solutionSequence = []
+
+#sequence of moves for each step
+crossSequence = []
+f2lSequence = []
+ollSequence = []
+pllSequence = []
+
+moveCount = 0
+
 #Moves
 
 def u(addToSolutionSequence=True):
@@ -395,9 +407,14 @@ def wideFPrime(addToSolutionSequence=True):
         solutionSequence.append('f\'')
     
 def randomizeCube():
-    
-    #reset solutionSequence
+    #reset solutionSequence and other sequences
+    scrambleSequence.clear()
     solutionSequence.clear()
+    
+    crossSequence.clear()
+    f2lSequence.clear()
+    ollSequence.clear()
+    pllSequence.clear()
     
     #array containing all possible moes on cube
     moveSet = [r, rPrime, r2, l, lPrime, l2, f, fPrime, f2, b, bPrime, b2, u, uPrime, u2, d, dPrime, d2]
@@ -410,8 +427,7 @@ def randomizeCube():
     randomMoves = {'r' : 'R', 'rPrime' : 'R\'', 'r2' : 'R2', 'l' : 'L', 'lPrime' : 'L\'', 'l2' : 'L2', 'm' : 'M', 'mPrime' : 'M\'', 'm2' : 'M2',
     'f' : 'F', 'fPrime' : 'F\'', 'f2' : 'F2', 'b' : 'B', 'bPrime' : 'B\'', 'b2' : 'B2', 'u' : 'U', 'uPrime': 'U\'', 'u2' : 'U2', 'd' : 'D', 'dPrime' : 'D\'', 'd2' : 'D2'}
     
-    #array to hold the instructions to get to scrambled state
-    scrambleSequence = []
+    
     
     count = 0
     
@@ -428,7 +444,7 @@ def randomizeCube():
         count += 1
     
     addToSolutionSequence = True
-    return {"Scramble Sequence" : scrambleSequence}
+    
     
 #function to keep track of piece states
 def changeCubeState():

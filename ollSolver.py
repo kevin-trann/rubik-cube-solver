@@ -101,6 +101,8 @@ def UShapeAlg():
     rPrime()
     
 def ollSolver():
+    
+    global ollSequence
 
     #while yellow cross isnt formed ontop
     while cube[0][0][1] != 'Y' or cube[0][1][0] != 'Y' or cube[0][1][2] != 'Y' or cube[0][2][1] != 'Y':
@@ -264,3 +266,18 @@ def ollSolver():
     elif cube[1][0][0] == 'Y' and cube[1][0][2] == 'Y':
         u()
         piShapeAlg()
+    
+    
+    #get OLL moves
+    recordOLL = False
+    
+    for move in solutionSequence:
+        
+        if recordOLL:
+            ollSequence.append(move)
+        
+        if move != 'F2L':
+            continue
+        else:
+            recordOLL = True
+    solutionSequence.append("OLL")
